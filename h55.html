@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forever With You ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+background:black;
+color:white;
+transition:2s;
+}
+
+/* 🌌 GALAXY BACKGROUND */
+
+.galaxy{
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(ellipse at bottom,#1b2735 0%,#090a0f 100%);
+overflow:hidden;
+z-index:-2;
+}
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:0.2;}
+to{opacity:1;}
+}
+
+/* 🌠 SHOOTING STAR */
+
+.shooting{
+position:absolute;
+width:3px;
+height:80px;
+background:linear-gradient(white,transparent);
+transform:rotate(45deg);
+animation:shoot 5s linear infinite;
+}
+
+@keyframes shoot{
+0%{top:-10%;left:-10%;opacity:1;}
+100%{top:110%;left:110%;opacity:0;}
+}
+
+/* 💎 GLASS CARD */
+
+.container{
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(20px);
+padding:50px;
+border-radius:30px;
+text-align:center;
+width:90%;
+max-width:750px;
+box-shadow:0 0 40px rgba(255,255,255,0.2);
+animation:fadeIn 3s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:scale(0.9);}
+to{opacity:1; transform:scale(1);}
+}
+
+h1{
+font-family:'Great Vibes';
+font-size:60px;
+margin-bottom:20px;
+}
+
+/* 💌 LETTER */
+
+#letter{
+min-height:150px;
+font-size:18px;
+margin-bottom:30px;
+line-height:1.6;
+}
+
+/* 🔥 NEON BUTTONS */
+
+.buttons{
+position:relative;
+height:100px;
+}
+
+button{
+padding:15px 40px;
+font-size:18px;
+border:none;
+border-radius:50px;
+cursor:pointer;
+transition:0.4s;
+margin:10px;
+font-weight:bold;
+}
+
+.yes{
+background:linear-gradient(45deg,#ff00cc,#ff4e8a);
+color:white;
+box-shadow:0 0 20px #ff00cc;
+}
+
+.yes:hover{
+transform:scale(1.15);
+box-shadow:0 0 40px #ff00cc,0 0 60px #ff4e8a;
+}
+
+.no{
+background:linear-gradient(45deg,#444,#111);
+color:white;
+position:absolute;
+box-shadow:0 0 15px red;
+}
+
+.no:hover{
+box-shadow:0 0 25px red;
+}
+
+/* 🌹 PETALS */
+
+.petal{
+position:absolute;
+width:12px;
+height:12px;
+background:pink;
+border-radius:50%;
+opacity:0.7;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10vh) rotate(0);}
+100%{transform:translateY(110vh) rotate(360deg);}
+}
+
+/* 💖 HEART FLOAT */
+
+.heart{
+position:absolute;
+font-size:25px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-100vh);}
+}
+
+/* 🎆 FIREWORK */
+
+.firework{
+position:absolute;
+width:5px;
+height:5px;
+background:gold;
+border-radius:50%;
+animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+0%{transform:scale(1);opacity:1;}
+100%{transform:scale(15);opacity:0;}
+}
+
+/* 💍 RING */
+
+.ring{
+font-size:120px;
+animation:ring 1s infinite alternate;
+}
+
+@keyframes ring{
+from{transform:scale(1);}
+to{transform:scale(1.2);}
+}
+
+/* 🌈 AFTER YES BACKGROUND */
+
+.loveSky{
+background:linear-gradient(135deg,#ff0080,#ff8c00,#40e0d0);
+transition:3s;
+}
+
+.darkMode{
+background:black;
+animation:shake 0.5s infinite;
+}
+
+@keyframes shake{
+0%{transform:translateX(0);}
+25%{transform:translateX(-5px);}
+50%{transform:translateX(5px);}
+75%{transform:translateX(-5px);}
+100%{transform:translateX(0);}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+</audio>
+
+<div class="galaxy" id="galaxy"></div>
+
+<div class="container">
+<h1 id="title">Will You Be Mine Forever? 💖</h1>
+<div id="letter"></div>
+
+<div class="buttons">
+<button class="yes" onclick="sayYes()">YES 💍</button>
+<button class="no" id="noBtn" onclick="moveNo()">NO 😢</button>
+</div>
+</div>
+
+<script>
+
+/* 🌌 CREATE STARS */
+
+for(let i=0;i<150;i++){
+let star=document.createElement("div");
+star.className="star";
+star.style.top=Math.random()*100+"%";
+star.style.left=Math.random()*100+"%";
+star.style.animationDuration=(Math.random()*2+1)+"s";
+document.getElementById("galaxy").appendChild(star);
+}
+
+/* 💌 TYPEWRITER */
+
+const text="You are the calm in my chaos, the light in my darkness, and the dream I never want to wake up from. Every second with you feels like a blessing. I don't want just memories... I want a lifetime with you. Through every smile, every tear, every sunrise and every sunset... I want you beside me. So today, under this galaxy of endless stars... I ask you with all my heart... Will you be mine forever? ❤️";
+
+let i=0;
+function typeWriter(){
+if(i<text.length){
+document.getElementById("letter").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typeWriter,30);
+}
+}
+typeWriter();
+
+/* 😈 NO LOGIC */
+
+let count=0;
+function moveNo(){
+let btn=document.getElementById("noBtn");
+btn.style.left=Math.random()*300+"px";
+btn.style.top=Math.random()*60+"px";
+
+count++;
+
+if(count>5){
+document.body.classList.add("darkMode");
+document.getElementById("title").innerText="Why are you doing this? 😭";
+}
+}
+
+/* 💖 PETALS */
+
+setInterval(()=>{
+let petal=document.createElement("div");
+petal.className="petal";
+petal.style.left=Math.random()*100+"vw";
+petal.style.animationDuration=(Math.random()*3+4)+"s";
+document.body.appendChild(petal);
+setTimeout(()=>petal.remove(),7000);
+},300);
+
+/* 💍 YES */
+
+function sayYes(){
+
+document.body.classList.remove("darkMode");
+document.body.classList.add("loveSky");
+
+document.querySelector(".container").innerHTML=
+"<div class='ring'>💍</div><h1>YOU SAID YES 😍</h1><h2>Forever Begins Now ✨</h2>";
+
+startHearts();
+startFireworks();
+}
+
+/* 💖 HEARTS */
+
+function startHearts(){
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*30+20)+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+},200);
+}
+
+/* 🎆 FIREWORKS */
+
+function startFireworks(){
+setInterval(()=>{
+let fire=document.createElement("div");
+fire.className="firework";
+fire.style.top=Math.random()*100+"vh";
+fire.style.left=Math.random()*100+"vw";
+document.body.appendChild(fire);
+setTimeout(()=>fire.remove(),1000);
+},300);
+}
+
+</script>
+
+</body>
+</html>
